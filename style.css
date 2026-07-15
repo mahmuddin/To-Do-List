@@ -1,0 +1,410 @@
+/* =========================================================
+   Todo List — style.css
+   Vanilla CSS, no dependencies
+   Neobrutalism Theme
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Reset & Base
+   --------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #ff90e8; /* Pink background for contrast */
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 80px;
+}
+
+/* ---------------------------------------------------------
+   App Container
+   --------------------------------------------------------- */
+.app-container {
+  background-color: #ffffff;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px #000;
+  width: 100%;
+  max-width: 560px;
+  padding: 32px 28px 24px;
+}
+
+.app-container h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 0px #ffeb3b; /* bright yellow shadow */
+}
+
+/* ---------------------------------------------------------
+   Input Area
+   --------------------------------------------------------- */
+.input-area {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+#task-input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: 3px solid #000;
+  outline: none;
+  color: #000;
+  background-color: #fff;
+  box-shadow: 4px 4px 0px #000;
+  transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+}
+
+#task-input:focus {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+  background-color: #e0f7fa;
+}
+
+#task-input::placeholder {
+  color: #555;
+  font-weight: 600;
+}
+
+#add-btn {
+  padding: 12px 24px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #ffeb3b; /* Bright Yellow */
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#add-btn:hover:not(:disabled) {
+  background-color: #ffd600;
+}
+
+#add-btn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* ---------------------------------------------------------
+   Error Message
+   --------------------------------------------------------- */
+.error-msg {
+  display: none;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  padding: 8px 12px;
+  background-color: #ff5252;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0px #000;
+}
+
+/* ---------------------------------------------------------
+   List Section
+   --------------------------------------------------------- */
+.list-section {
+  margin-top: 24px;
+}
+
+/* Mark-all area */
+.mark-all-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  margin-bottom: 12px;
+  border-bottom: 4px solid #000;
+}
+
+.mark-all-area label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #000;
+  cursor: pointer;
+  user-select: none;
+}
+
+#mark-all-checkbox {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #000;
+}
+
+/* Task list */
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Empty state message */
+.empty-msg {
+  text-align: center;
+  color: #000;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 28px 0 16px;
+  background: #fff;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+}
+
+/* ---------------------------------------------------------
+   Task Item
+   --------------------------------------------------------- */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background-color: #fff;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  cursor: grab;
+  transition: transform 0.1s, box-shadow 0.1s, background-color 0.15s;
+}
+
+.task-item:active {
+  cursor: grabbing;
+}
+
+.task-item.dragging {
+  opacity: 0.5;
+  box-shadow: 2px 2px 0px #000;
+  transform: scale(0.98);
+  background-color: #ffeb3b; /* yellow tint when dragging */
+}
+
+.task-item:hover {
+  background-color: #f4f4f4;
+}
+
+.task-checkbox {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #000;
+}
+
+.task-label {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000;
+  word-break: break-word;
+  cursor: text;
+  user-select: none;
+}
+
+/* ---------------------------------------------------------
+   Completed Task State
+   --------------------------------------------------------- */
+.task-item.completed {
+  background-color: #e0e0e0;
+  box-shadow: 2px 2px 0px #000;
+  transform: translate(2px, 2px);
+}
+
+.task-item.completed .task-label {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  color: #555;
+}
+
+/* ---------------------------------------------------------
+   Edit Mode — Task Item
+   --------------------------------------------------------- */
+.task-edit-input {
+  display: none;
+}
+
+.task-item.editing .task-label {
+  display: none;
+}
+
+.task-item.editing .task-edit-input {
+  display: block;
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: 3px solid #000;
+  outline: none;
+  color: #000;
+  background-color: #fff;
+  box-shadow: inset 3px 3px 0px rgba(0,0,0,0.15);
+}
+
+.task-item.editing .task-edit-input:focus {
+  background-color: #e0f7fa;
+}
+
+/* Delete button */
+.task-delete-btn {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #ff5252;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.task-delete-btn:hover:not(:disabled) {
+  background-color: #ff1744;
+}
+
+.task-delete-btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.list-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 4px solid #000;
+}
+
+#active-count {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   Filter Buttons
+   --------------------------------------------------------- */
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, background-color 0.1s;
+}
+
+.filter-btn:hover:not(:disabled) {
+  background-color: #e0f7fa;
+}
+
+.filter-btn.active {
+  background-color: #ffeb3b; /* Yellow */
+  box-shadow: 1px 1px 0px #000;
+  transform: translate(2px, 2px);
+}
+
+.filter-btn.active:hover {
+  background-color: #ffd600;
+}
+
+/* Clear completed button */
+#clear-completed-btn {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0px #ffeb3b; /* yellow shadow */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#clear-completed-btn:hover:not(:disabled) {
+  background-color: #333;
+}
+
+#clear-completed-btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px #ffeb3b;
+}
+
+/* ---------------------------------------------------------
+   Disabled State
+   --------------------------------------------------------- */
+button:disabled,
+input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
+
+button:disabled:hover {
+  transform: none;
+  box-shadow: inherit;
+}
+
+/* ---------------------------------------------------------
+   Responsive — narrow screens
+   --------------------------------------------------------- */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 24px 16px 20px;
+    box-shadow: 4px 4px 0px #000;
+  }
+
+  .list-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .filter-buttons {
+    align-self: center;
+  }
+
+  #clear-completed-btn {
+    width: 100%;
+  }
+}

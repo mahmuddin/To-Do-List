@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>Todo List</h1>
+
+      <!-- Input area -->
+      <div class="input-area">
+        <input
+          id="task-input"
+          type="text"
+          maxlength="50"
+          placeholder="Tambahkan tugas baru..."
+        />
+        <button id="add-btn">Tambah</button>
+      </div>
+      <p id="input-error" class="error-msg" aria-live="polite"></p>
+
+      <!-- Mark all + List -->
+      <div class="list-section">
+        <div class="mark-all-area">
+          <input type="checkbox" id="mark-all-checkbox" />
+          <label for="mark-all-checkbox">Tandai Semua Selesai</label>
+        </div>
+        <ul id="task-list"></ul>
+        <p id="empty-msg" class="empty-msg"></p>
+      </div>
+
+      <!-- Footer -->
+      <footer class="list-footer">
+        <span id="active-count">0 tugas tersisa</span>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Semua</button>
+          <button class="filter-btn" data-filter="active">Aktif</button>
+          <button class="filter-btn" data-filter="completed">Selesai</button>
+        </div>
+        <button id="clear-completed-btn" disabled>Hapus Semua yang Selesai</button>
+      </footer>
+    </div>
+
+    <script src="taskStore.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

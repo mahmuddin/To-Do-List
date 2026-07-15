@@ -16,8 +16,9 @@ All user-facing text is in **Bahasa Indonesia** (e.g., "Tambah", "Hapus", "Seles
 
 ## Business Rules
 
-- Task titles: 1–200 characters (trimmed); blank/whitespace-only titles are rejected
+- Task titles: 3–50 characters (trimmed); blank/whitespace-only titles are rejected
 - New tasks appear at the top of the list
+- Tasks can be manually reordered via drag-and-drop
 - Inline double-click to edit a task; Enter or blur saves, Escape cancels
 - Delete is immediate — no confirmation dialog
 - `localStorage` errors are surfaced to the user but the in-memory state is preserved

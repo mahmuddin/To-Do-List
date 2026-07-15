@@ -1,0 +1,440 @@
+{
+  "pbtResults": {
+    "2.2 Tulis property test untuk `loadTasks` / `saveTasks`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784022117595
+    },
+    "2.7 Tulis property test untuk `updateTaskTitle`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784022156697
+    },
+    "2.4 Tulis property test untuk `addTask`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784022245876
+    },
+    "2.9 Tulis property test untuk `toggleTask`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784022357136
+    },
+    "2.5 Tulis property test untuk validasi input `addTask`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784023264772
+    },
+    "2.11 Tulis property test untuk `toggleAllTasks`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784023406683
+    },
+    "2.13 Tulis property test untuk `deleteCompletedTasks`": {
+      "status": "passed",
+      "lastRunTimestamp": 1784023407654
+    }
+  },
+  "executionHistory": {
+    "2.1 Definisikan konstanta, state, dan fungsi `loadTasks` / `saveTasks`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010128453
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010140881
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012581096
+      }
+    ],
+    "2.2 Tulis property test untuk `loadTasks` / `saveTasks`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010128583
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021602998
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023575945
+      }
+    ],
+    "2.3 Implementasikan `addTask(title)`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010128683
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012587554
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021592224
+      }
+    ],
+    "2.4 Tulis property test untuk `addTask`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010128784
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021603718
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023576769
+      }
+    ],
+    "2.5 Tulis property test untuk validasi input `addTask`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010128882
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021604114
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023577525
+      }
+    ],
+    "2.6 Implementasikan `updateTaskTitle(id, title)`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010128982
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012591995
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021592597
+      }
+    ],
+    "2.7 Tulis property test untuk `updateTaskTitle`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129061
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021605083
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023578354
+      }
+    ],
+    "2.8 Implementasikan `toggleTask(id)`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129172
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012592693
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021593413
+      }
+    ],
+    "2.9 Tulis property test untuk `toggleTask`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129266
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021605791
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023579194
+      }
+    ],
+    "2.10 Implementasikan `toggleAllTasks()`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129325
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012593440
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021594185
+      }
+    ],
+    "2.11 Tulis property test untuk `toggleAllTasks`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129422
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021606227
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023579744
+      }
+    ],
+    "2.12 Implementasikan `deleteTask(id)` dan `deleteCompletedTasks()`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129490
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012594213
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021595156
+      }
+    ],
+    "2.13 Tulis property test untuk `deleteCompletedTasks`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129596
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021607091
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023580393
+      }
+    ],
+    "3. Checkpoint — Pastikan semua unit & property tests di `taskStore.test.js` lulus": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129687
+      }
+    ],
+    "4.1 Buat `index.html` dengan skeleton markup sesuai desain": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129785
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010146128
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012582060
+      }
+    ],
+    "4.2 Buat `style.css` — styling dasar dan state visual": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129885
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784012594755
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021596326
+      }
+    ],
+    "5.1 Inisialisasi state UI, muat data, dan render awal": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010129994
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021607901
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023581291
+      }
+    ],
+    "5.2 Implementasikan fungsi `render()`, `renderTaskItem(task)`, dan `getFilteredTasks()`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130094
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023594598
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024457979
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024463644
+      }
+    ],
+    "5.3 Tulis property test untuk `getFilteredTasks`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130174
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024469726
+      }
+    ],
+    "5.4 Implementasikan `renderFooter()` dan `renderMarkAllControl()`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130263
+      },
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023595376
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024458418
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024464481
+      }
+    ],
+    "5.5 Tulis property test untuk konsistensi active count": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130366
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024470703
+      }
+    ],
+    "5.6 Implementasikan `handleAddTask` dan `setFilter`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130468
+      },
+      {
+        "executionId": "1cc5f216-b7b3-4d0f-afbd-11012b6d5235",
+        "chatSessionId": "sess_b6b80e57-3fc7-4c37-a797-e60bea0367f2",
+        "timestamp": 1784024471416
+      }
+    ],
+    "5.7 Implementasikan `handleToggleTask`, `handleDeleteTask`, `handleDeleteCompleted`, `handleToggleAll`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130619
+      }
+    ],
+    "5.8 Implementasikan `handleStartEdit`, `handleSaveEdit`, `handleCancelEdit`": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130712
+      }
+    ],
+    "6. Checkpoint — Verifikasi fungsionalitas UI secara menyeluruh": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784010130810
+      }
+    ],
+    "4. Implementasi `index.html` dan `style.css` — Markup & Styling": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784021596374
+      }
+    ],
+    "2. Implementasi `taskStore.js` — Model / Data Layer": [
+      {
+        "executionId": "780beff8-b5a2-4ebf-98a1-92bf99643236",
+        "chatSessionId": "sess_b64a3e0b-f329-4fc6-94e5-709c3c440888",
+        "timestamp": 1784023580488
+      }
+    ],
+    "1. Setup project structure dan environment pengujian": [
+      {
+        "executionId": "514ab9d2-8e3b-4f6b-9d3a-0130efd286c6",
+        "chatSessionId": "sess_a92520db-5409-4795-b9ee-b419977be7d6",
+        "timestamp": 1784023811281
+      },
+      {
+        "executionId": "514ab9d2-8e3b-4f6b-9d3a-0130efd286c6",
+        "chatSessionId": "sess_a92520db-5409-4795-b9ee-b419977be7d6",
+        "timestamp": 1784024198529
+      }
+    ]
+  }
+}

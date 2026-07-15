@@ -11,6 +11,17 @@ Prinsip desain utama:
 
 ---
 
+## UI / UX Design Concept
+
+Konsep desain visual aplikasi ini menggunakan gaya **Neobrutalism**, yang memiliki karakteristik:
+- **Borders**: Border hitam tebal (solid black border) pada setiap elemen utama (container, tombol, input, list item).
+- **Shadows**: Bayangan hitam tajam (hard shadow) tanpa blur (misalnya `box-shadow: 6px 6px 0px #000`).
+- **Colors**: Kombinasi warna kontras yang mencolok, seperti kuning terang atau merah muda (pink) untuk latar belakang dan elemen aktif/tombol, dipadukan dengan putih dan hitam pekat.
+- **Typography**: Tipografi tegas dan berani dengan warna teks hitam pekat untuk memaksimalkan kontras dan visibilitas.
+- **Interactions**: Efek klik yang menekan elemen ke bawah (menghilangkan bayangan dan menggeser posisi) sehingga terasa mekanis dan kaku.
+
+---
+
 ## Architecture
 
 Aplikasi menggunakan arsitektur **MVC ringan** tanpa framework:
@@ -66,7 +77,7 @@ Mengelola state tasks dan persistensi.
 /**
  * @typedef {Object} Task
  * @property {string}  id        - UUID unik
- * @property {string}  title     - Judul task (1–200 karakter)
+ * @property {string}  title     - Judul task (3–50 karakter)
  * @property {boolean} completed - Status penyelesaian
  * @property {number}  createdAt - Unix timestamp (Date.now())
  */
@@ -86,6 +97,7 @@ function toggleTask(id)           // -> Task
 function toggleAllTasks()         // -> Task[]
 function deleteTask(id)           // -> void
 function deleteCompletedTasks()   // -> void
+function moveTaskBefore(sourceId, referenceId) // -> void
 ```
 
 ### 2. `app.js` — Controller + View Layer
@@ -124,7 +136,7 @@ function handleToggleAll()
 
   <!-- Input area -->
   <div class="input-area">
-    <input id="task-input" maxlength="200" placeholder="Tambahkan tugas baru..." />
+    <input id="task-input" maxlength="50" placeholder="Tambahkan tugas baru..." />
     <button id="add-btn">Tambah</button>
   </div>
   <p id="input-error" class="error-msg" aria-live="polite"></p>
@@ -161,7 +173,7 @@ function handleToggleAll()
 ```js
 {
   id:        "uuid-v4-string",   // string, unik, immutable
-  title:     "Beli susu",        // string, 1–200 karakter (trimmed)
+  title:     "Beli susu",        // string, 3–50 karakter (trimmed)
   completed: false,              // boolean
   createdAt: 1718000000000       // number (ms epoch)
 }
@@ -196,7 +208,7 @@ type Filter = "all" | "active" | "completed"
 
 ### Property 1: Task baru ditambahkan ke awal list
 
-*For any* Task_List dengan N tasks dan judul valid (non-kosong, non-whitespace, ≤200 karakter), setelah `addTask(title)` dipanggil, panjang Task_List SHALL menjadi N+1 dan task dengan judul tersebut SHALL berada di indeks 0.
+*For any* Task_List dengan N tasks dan judul valid (3-50 karakter), setelah `addTask(title)` dipanggil, panjang Task_List SHALL menjadi N+1 dan task dengan judul tersebut SHALL berada di indeks 0.
 
 **Validates: Requirements 1.1, 1.2, 1.5**
 
@@ -260,9 +272,17 @@ type Filter = "all" | "active" | "completed"
 
 ### Property 9: Edit dengan judul valid memperbarui task yang tepat
 
-*For any* task dalam Task_List dan judul valid (non-whitespace, ≤200 karakter), setelah `updateTaskTitle(id, newTitle)`, hanya task dengan `id` tersebut yang judul-nya berubah; semua task lain SHALL tidak termodifikasi.
+*For any* task dalam Task_List dan judul valid (3-50 karakter), setelah `updateTaskTitle(id, newTitle)`, hanya task dengan `id` tersebut yang judul-nya berubah; semua task lain SHALL tidak termodifikasi.
 
 **Validates: Requirements 5.2, 5.3**
+
+---
+
+### Property 10: Reorder mempertahankan integritas data
+
+*For any* Task_List, setelah `moveTaskBefore(sourceId, referenceId)` dipanggil, Task_List SHALL berisi kumpulan task yang sama persis secara set/himpunan (tidak ada yang terhapus atau terduplikasi), hanya urutannya yang berubah.
+
+**Validates: Requirements 9.3, 9.4**
 
 ---
 
@@ -272,7 +292,7 @@ type Filter = "all" | "active" | "completed"
 |---|---|
 | Input kosong / hanya spasi saat tambah task | Tampilkan pesan `"Judul tugas tidak boleh kosong"` di bawah input; task tidak ditambahkan |
 | Input kosong / hanya spasi saat edit task | Tampilkan pesan `"Judul tugas tidak boleh kosong"`; tetap di mode edit |
-| Judul > 200 karakter | Browser/input mencegah pengetikan karakter ke-201 via `maxlength="200"` |
+| Judul > 50 karakter | Browser/input mencegah pengetikan karakter ke-51 via `maxlength="50"` |
 | `localStorage` penuh saat save | Tangkap `DOMException` di `saveTasks()`; tampilkan notifikasi error kepada pengguna; pertahankan state di memori |
 | Data `localStorage` corrupt (parse gagal / field hilang) | Muat Task_List kosong; hapus key `"todolist-tasks"` dari storage |
 | Task ID tidak ditemukan saat operasi | Operasi diabaikan; tidak ada error yang melempar ke UI |
@@ -331,7 +351,7 @@ Setiap property test menggunakan **fast-check** dengan tag komentar:
 
 | Property | Generators yang Digunakan |
 |---|---|
-| P1: Task baru di awal list | `fc.array(taskArb)`, `fc.string({minLength:1, maxLength:200})` |
+| P1: Task baru di awal list | `fc.array(taskArb)`, `fc.string({minLength:3, maxLength:50})` |
 | P2: Whitespace selalu ditolak | `fc.stringOf(fc.constantFrom(' ','\t','\n'))` |
 | P3: Toggle round-trip | `fc.array(taskArb, {minLength:1})`, `fc.nat()` (pilih index) |
 | P4: Active count konsisten | `fc.array(taskArb)` |
@@ -339,7 +359,8 @@ Setiap property test menggunakan **fast-check** dengan tag komentar:
 | P6: Persistensi round-trip | `fc.array(taskArb)` + mock localStorage |
 | P7: ToggleAll idempoten | `fc.array(taskArb, {minLength:1})` |
 | P8: DeleteCompleted tidak hapus active | `fc.array(taskArb)` |
-| P9: Edit hanya ubah target task | `fc.array(taskArb, {minLength:1})`, `fc.string({minLength:1, maxLength:200})` |
+| P9: Edit hanya ubah target task | `fc.array(taskArb, {minLength:1})`, `fc.string({minLength:3, maxLength:50})` |
+| P10: Reorder mempertahankan integritas data | `fc.array(taskArb, {minLength:2})`, `fc.nat()`, `fc.nat()` |
 
 ### Integration / UI Tests
 

@@ -26,12 +26,12 @@ Aplikasi Todo List Frontend adalah aplikasi web sederhana berbasis antarmuka pen
 
 #### Acceptance Criteria
 
-1. THE Task_Input SHALL menerima teks judul Task dengan panjang antara 1 hingga 200 karakter.
+1. THE Task_Input SHALL menerima teks judul Task dengan panjang antara 3 hingga 50 karakter.
 2. WHEN pengguna menekan tombol "Tambah" atau menekan tombol Enter pada Task_Input, THE App SHALL menambahkan Task baru ke Task_List dengan status Active Task dan timestamp pembuatan saat ini.
 3. WHEN Task baru berhasil ditambahkan, THE App SHALL mengosongkan Task_Input secara otomatis dan mengembalikan fokus ke Task_Input.
 4. IF Task_Input kosong atau hanya berisi spasi ketika pengguna mencoba menambahkan Task, THEN THE App SHALL menampilkan pesan kesalahan "Judul tugas tidak boleh kosong" dan Task tidak ditambahkan ke Task_List.
 5. WHEN Task baru ditambahkan, THE App SHALL menampilkan Task baru di bagian atas Task_List.
-6. IF judul Task melebihi 200 karakter, THEN THE App SHALL mencegah input karakter tambahan setelah karakter ke-200.
+6. IF judul Task melebihi 50 karakter, THEN THE App SHALL mencegah input karakter tambahan setelah karakter ke-50.
 
 ---
 
@@ -85,7 +85,7 @@ Aplikasi Todo List Frontend adalah aplikasi web sederhana berbasis antarmuka pen
 3. WHEN pengguna mengklik di luar kolom edit (blur event), THE App SHALL menyimpan perubahan judul Task (setelah trim spasi di awal/akhir) dan menonaktifkan mode edit.
 4. WHEN pengguna menekan tombol Escape saat dalam mode edit, THE App SHALL membatalkan perubahan, mengembalikan judul Task ke nilai semula, dan menonaktifkan mode edit.
 5. IF kolom edit kosong atau hanya berisi spasi ketika pengguna menyimpan perubahan, THEN THE App SHALL menampilkan pesan kesalahan "Judul tugas tidak boleh kosong" dan tetap dalam mode edit tanpa menyimpan perubahan.
-6. IF judul yang diedit melebihi 200 karakter, THEN THE App SHALL mencegah input karakter tambahan setelah karakter ke-200 saat dalam mode edit.
+6. IF judul yang diedit melebihi 50 karakter, THEN THE App SHALL mencegah input karakter tambahan setelah karakter ke-50 saat dalam mode edit.
 7. WHEN pengguna melakukan double-click pada judul Task_Item lain saat sebuah Task_Item sedang dalam mode edit, THE App SHALL menyimpan perubahan pada Task_Item yang sedang diedit (mengikuti aturan kriteria 2), lalu mengaktifkan mode edit pada Task_Item yang baru diklik.
 
 ---
@@ -131,3 +131,17 @@ Aplikasi Todo List Frontend adalah aplikasi web sederhana berbasis antarmuka pen
 4. WHEN pengguna mengklik kontrol "Tandai Semua Selesai" saat seluruh Task sudah berstatus Completed Task, THE App SHALL mengubah seluruh Completed Task kembali menjadi Active Task.
 5. IF Task_List kosong, THEN THE App SHALL menonaktifkan (disabled) kontrol "Tandai Semua Selesai".
 6. WHEN pengguna mengklik kontrol "Tandai Semua Selesai", THE App SHALL menerapkan perubahan status ke seluruh Task dalam Task_List tanpa memandang filter yang sedang aktif.
+
+---
+
+### Requirement 9: Menyusun Ulang Task (Drag and Drop)
+
+**User Story:** Sebagai pengguna, saya ingin dapat mengubah urutan tugas secara manual (drag-and-drop), sehingga saya dapat mengatur prioritas pekerjaan sesuai keinginan saya.
+
+#### Acceptance Criteria
+
+1. THE Task_Item SHALL mendukung interaksi *drag and drop* tanpa memerlukan elemen (drag handle) tambahan khusus (seluruh kotak tugas dapat di-drag).
+2. WHEN pengguna men-drag sebuah Task_Item, THE App SHALL memberikan umpan balik visual bahwa elemen tersebut sedang dipindahkan (misalnya dengan mengurangi opacity/tampilan transparan).
+3. WHEN pengguna men-drop Task_Item di posisi baru di dalam Task_List, THE App SHALL memindahkan Task_Item ke posisi tersebut.
+4. WHEN posisi Task_Item berubah akibat *drop*, THE App SHALL memperbarui susunan `Task_List` utama di memori dan menyimpannya secara otomatis ke Local_Storage agar urutan tetap bertahan meskipun aplikasi dimuat ulang.
+5. IF pengguna melakukan drag-and-drop saat filter tertentu sedang aktif (mis. Aktif atau Selesai), THEN urutan baru SHALL disimpan sesuai posisi penyisipan secara relatif terhadap tugas yang ada di filter tersebut.
