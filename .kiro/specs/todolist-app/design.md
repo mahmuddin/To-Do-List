@@ -139,7 +139,6 @@ function handleToggleAll()
     <input id="task-input" maxlength="50" placeholder="Tambahkan tugas baru..." />
     <button id="add-btn">Tambah</button>
   </div>
-  <p id="input-error" class="error-msg" aria-live="polite"></p>
 
   <!-- Mark all + List -->
   <div class="list-section">
@@ -290,8 +289,8 @@ type Filter = "all" | "active" | "completed"
 
 | Kondisi Error | Perilaku |
 |---|---|
-| Input kosong / hanya spasi saat tambah task | Tampilkan pesan `"Judul tugas tidak boleh kosong"` di bawah input; task tidak ditambahkan |
-| Input kosong / hanya spasi saat edit task | Tampilkan pesan `"Judul tugas tidak boleh kosong"`; tetap di mode edit |
+| Input kosong / hanya spasi saat tambah task | Tampilkan pesan `"Judul tugas tidak boleh kosong"` berupa notifikasi pop-up bergaya tumpukan (stacked); task tidak ditambahkan |
+| Input kosong / hanya spasi saat edit task | Tampilkan pesan `"Judul tugas tidak boleh kosong"` berupa notifikasi pop-up bergaya tumpukan (stacked); tetap di mode edit |
 | Judul > 50 karakter | Browser/input mencegah pengetikan karakter ke-51 via `maxlength="50"` |
 | `localStorage` penuh saat save | Tangkap `DOMException` di `saveTasks()`; tampilkan notifikasi error kepada pengguna; pertahankan state di memori |
 | Data `localStorage` corrupt (parse gagal / field hilang) | Muat Task_List kosong; hapus key `"todolist-tasks"` dari storage |

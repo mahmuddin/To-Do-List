@@ -29,7 +29,7 @@ Aplikasi Todo List Frontend adalah aplikasi web sederhana berbasis antarmuka pen
 1. THE Task_Input SHALL menerima teks judul Task dengan panjang antara 3 hingga 50 karakter.
 2. WHEN pengguna menekan tombol "Tambah" atau menekan tombol Enter pada Task_Input, THE App SHALL menambahkan Task baru ke Task_List dengan status Active Task dan timestamp pembuatan saat ini.
 3. WHEN Task baru berhasil ditambahkan, THE App SHALL mengosongkan Task_Input secara otomatis dan mengembalikan fokus ke Task_Input.
-4. IF Task_Input kosong atau hanya berisi spasi ketika pengguna mencoba menambahkan Task, THEN THE App SHALL menampilkan pesan kesalahan "Judul tugas tidak boleh kosong" dan Task tidak ditambahkan ke Task_List.
+4. IF Task_Input kosong atau hanya berisi spasi ketika pengguna mencoba menambahkan Task, THEN THE App SHALL menampilkan pesan kesalahan berupa notifikasi *pop-up* (stacked notifications) "Judul tugas tidak boleh kosong" dan Task tidak ditambahkan ke Task_List.
 5. WHEN Task baru ditambahkan, THE App SHALL menampilkan Task baru di bagian atas Task_List.
 6. IF judul Task melebihi 50 karakter, THEN THE App SHALL mencegah input karakter tambahan setelah karakter ke-50.
 
@@ -84,7 +84,7 @@ Aplikasi Todo List Frontend adalah aplikasi web sederhana berbasis antarmuka pen
 2. WHEN pengguna menekan tombol Enter saat dalam mode edit, THE App SHALL menyimpan perubahan judul Task (setelah trim spasi di awal/akhir) dan menonaktifkan mode edit.
 3. WHEN pengguna mengklik di luar kolom edit (blur event), THE App SHALL menyimpan perubahan judul Task (setelah trim spasi di awal/akhir) dan menonaktifkan mode edit.
 4. WHEN pengguna menekan tombol Escape saat dalam mode edit, THE App SHALL membatalkan perubahan, mengembalikan judul Task ke nilai semula, dan menonaktifkan mode edit.
-5. IF kolom edit kosong atau hanya berisi spasi ketika pengguna menyimpan perubahan, THEN THE App SHALL menampilkan pesan kesalahan "Judul tugas tidak boleh kosong" dan tetap dalam mode edit tanpa menyimpan perubahan.
+5. IF kolom edit kosong atau hanya berisi spasi ketika pengguna menyimpan perubahan, THEN THE App SHALL menampilkan pesan kesalahan berupa notifikasi *pop-up* (stacked notifications) "Judul tugas tidak boleh kosong" dan tetap dalam mode edit tanpa menyimpan perubahan.
 6. IF judul yang diedit melebihi 50 karakter, THEN THE App SHALL mencegah input karakter tambahan setelah karakter ke-50 saat dalam mode edit.
 7. WHEN pengguna melakukan double-click pada judul Task_Item lain saat sebuah Task_Item sedang dalam mode edit, THE App SHALL menyimpan perubahan pada Task_Item yang sedang diedit (mengikuti aturan kriteria 2), lalu mengaktifkan mode edit pada Task_Item yang baru diklik.
 

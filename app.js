@@ -19,6 +19,76 @@ let editingTaskId = null;
 let draggingTaskId = null;
 
 // ---------------------------------------------------------------------------
+// Notification System
+// ---------------------------------------------------------------------------
+
+let activeNotifications = [];
+
+/**
+ * Shows a stacked toast notification (iOS style).
+ * @param {string} message 
+ * @param {string} type (e.g. "error")
+ */
+function showNotification(message, type = "error") {
+  const container = document.getElementById("notification-container");
+  if (!container) return;
+
+  const toast = document.createElement("div");
+  toast.className = `toast-notification ${type}`;
+  toast.textContent = message;
+
+  container.appendChild(toast);
+  
+  // Force a reflow so the transition will trigger from the initial CSS state
+  toast.offsetHeight;
+
+  activeNotifications.unshift(toast);
+  updateNotificationStack();
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    // Start exit transition
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-30px) scale(0.9)';
+    
+    // Remove from array and DOM after transition completes
+    setTimeout(() => {
+      toast.remove();
+      const index = activeNotifications.indexOf(toast);
+      if (index > -1) {
+        activeNotifications.splice(index, 1);
+        updateNotificationStack();
+      }
+    }, 400); // match CSS transition duration
+  }, 3000);
+}
+
+/**
+ * Re-calculates and applies transforms to all active notifications to create a 3D stack.
+ */
+function updateNotificationStack() {
+  activeNotifications.forEach((toast, index) => {
+    // Only show top 4 notifications visually
+    if (index > 3) {
+      toast.style.opacity = '0';
+      toast.style.pointerEvents = 'none';
+      return;
+    }
+    
+    // scale shrinks 5% per layer
+    const scale = 1 - (index * 0.05);
+    // Move down 12px per layer
+    const translateY = index * 14; 
+    
+    toast.style.transform = `translateY(${translateY}px) scale(${scale})`;
+    toast.style.zIndex = 100 - index;
+    // Base opacity fades out slightly for older items
+    toast.style.opacity = (1 - (index * 0.2)).toString();
+    toast.style.pointerEvents = index === 0 ? 'auto' : 'none';
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Filtering
 // ---------------------------------------------------------------------------
 
@@ -187,27 +257,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.type === "keydown" && e.key !== "Enter") return;
 
     const input = document.getElementById("task-input");
-    const errorEl = document.getElementById("input-error");
     const title = input.value.trim();
 
     try {
       addTask(title);
 
-      // Success: clear input, refocus, hide error
+      // Success: clear input, refocus
       input.value = "";
       input.focus();
-      errorEl.style.display = "none";
-      errorEl.textContent = "";
 
       render();
     } catch (err) {
-      if (err instanceof ValidationError) {
-        // Show validation message inline
-        errorEl.textContent = err.message;
-        errorEl.style.display = "";
-      } else if (err instanceof StorageError) {
-        // Surface storage error to the user
-        alert(err.message);
+      if (err instanceof ValidationError || err instanceof StorageError) {
+        showNotification(err.message, "error");
       } else {
         throw err;
       }
@@ -254,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleTask(id);
       render();
     } catch (err) {
-      if (err instanceof StorageError) alert(err.message);
+      if (err instanceof StorageError) showNotification(err.message, "error");
       else throw err;
     }
   }
@@ -264,7 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteTask(id);
       render();
     } catch (err) {
-      if (err instanceof StorageError) alert(err.message);
+      if (err instanceof StorageError) showNotification(err.message, "error");
       else throw err;
     }
   }
@@ -274,7 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteCompletedTasks();
       render();
     } catch (err) {
-      if (err instanceof StorageError) alert(err.message);
+      if (err instanceof StorageError) showNotification(err.message, "error");
       else throw err;
     }
   }
@@ -284,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleAllTasks();
       render();
     } catch (err) {
-      if (err instanceof StorageError) alert(err.message);
+      if (err instanceof StorageError) showNotification(err.message, "error");
       else throw err;
     }
   }
@@ -298,10 +360,8 @@ document.addEventListener("DOMContentLoaded", () => {
       editingTaskId = null;
       render();
     } catch (err) {
-      if (err instanceof ValidationError) {
-        alert(err.message);
-      } else if (err instanceof StorageError) {
-        alert(err.message);
+      if (err instanceof ValidationError || err instanceof StorageError) {
+        showNotification(err.message, "error");
       } else {
         throw err;
       }
@@ -316,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateTaskTitle(editingTaskId, currentEditingInput.value);
         } catch (err) {
           if (err instanceof ValidationError || err instanceof StorageError) {
-            alert(err.message);
+            showNotification(err.message, "error");
             return;
           } else {
             throw err;
