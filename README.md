@@ -1,5 +1,5 @@
 # To-Do List App (Neobrutalism Design)
-
+![alt text](image.png)
 Aplikasi manajemen tugas (To-Do List) modern berbasis web yang dibangun sepenuhnya menggunakan Vanilla JavaScript, HTML5, dan CSS3 tanpa bergantung pada *framework* eksternal untuk merender komponen *client-side*. Aplikasi ini mengedepankan desain visual yang berani dengan gaya **Neobrutalism** dan interaksi *user experience* (UX) yang menarik.
 
 ## ✨ Fitur Utama
